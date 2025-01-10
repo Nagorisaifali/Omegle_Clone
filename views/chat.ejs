@@ -25,7 +25,6 @@
             height: 100%;
             object-fit: cover;
         }
-
         .smallFrame {
             position: fixed;
             bottom: 100px;
@@ -160,6 +159,7 @@
                 
             })
 
+
             socket.on("message" , function(message){
                 receiveMessage(message) ; 
             });
@@ -259,6 +259,7 @@
                 }
             }
 
+
             const createPeerConnection = () => {
                 peerConnection = new RTCPeerConnection(rtcSettings);
 
@@ -296,8 +297,6 @@
                     console.log("connection state change hui ", peerConnection.connectionState);
                 }
             }
-            
-
             
 
             const handleSignalingMessage = async (message) => {
@@ -341,7 +340,7 @@
 
             document.querySelector("#video-call-btn")
                 .addEventListener("click", function () {
-                    socket.emit("startVideoCall", { room })
+                    socket.emit("startVideoCall", { room }) ; 
                 })
 
             socket.on("incomingCall", function () {
@@ -377,6 +376,7 @@
                     hangup();
                 })
 
+                
             function hangup() {
                 if (peerConnection) {
                     peerConnection.close();
@@ -388,6 +388,7 @@
                     inCall = false;
                 }
             }
+
 
         </script>
 </body>

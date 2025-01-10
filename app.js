@@ -34,6 +34,8 @@ io.on("connection" , function(socket){
         socket.broadcast.to(data.room).emit("signalingMessage" , data.message)
      })
 
+     
+
      socket.on("message" , function(data){
         // console.log(data) ; 
         socket.broadcast.to(data.room).emit("message", data.message) ;  
